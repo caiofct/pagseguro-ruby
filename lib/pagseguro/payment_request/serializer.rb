@@ -18,6 +18,23 @@ module PagSeguro
         params[:abandonURL] = payment_request.abandon_url
         params[:maxUses] = payment_request.max_uses
         params[:maxAge] = payment_request.max_age
+        
+        #pre approval
+        params[:preApprovalCharge] = payment_request.pre_approval_charge
+        params[:preApprovalName] = payment_request.pre_approval_name
+        params[:preApprovalDetails] = payment_request.pre_approval_details
+        params[:preApprovalAmountPerPayment] = to_amount(payment_request.pre_approval_amount_per_payment)
+        params[:preApprovalPeriod] = payment_request.pre_approval_period
+        params[:preApprovalInitialDate] = payment_request.pre_approval_initial_date
+        params[:preApprovalFinalDate] = payment_request.pre_approval_final_date
+        params[:preApprovalMaxAmountPerPeriod] = to_amount(payment_request.pre_approval_max_amount_per_period)
+        params[:preApprovalMaxTotalAmount] = to_amount(payment_request.pre_approval_max_total_amount)
+        params[:reviewUrl] = payment_request.review_url
+        params[:preApprovalDayOfYear] = payment_request.pre_approval_day_of_year
+        params[:preApprovalDayOfMonth] = payment_request.pre_approval_day_of_month
+        params[:preApprovalDayOfWeek] = payment_request.pre_approval_day_of_week
+       
+        
         payment_request.items.each.with_index(1) do |item, index|
           serialize_item(item, index)
         end

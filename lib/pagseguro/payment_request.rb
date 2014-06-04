@@ -57,6 +57,32 @@ module PagSeguro
     # The token that identifies the request. Defaults to PagSeguro.token
     attr_accessor :token
 
+    # The token that identifies the request. Defaults to PagSeguro.token    
+    attr_accessor :pre_approval_charge
+    
+    attr_accessor :pre_approval_name
+    
+    attr_accessor :pre_approval_details
+    
+    attr_accessor :pre_approval_amount_per_payment
+    
+    attr_accessor :pre_approval_period
+    
+    attr_accessor :pre_approval_initial_date
+    
+    attr_accessor :pre_approval_final_date
+    
+    attr_accessor :pre_approval_max_amount_per_period
+    
+    attr_accessor :pre_approval_max_total_amount
+    
+    attr_accessor :review_url
+    
+    attr_accessor :pre_approval_day_of_year
+    
+    attr_accessor :pre_approval_day_of_month
+    
+    attr_accessor :pre_approval_day_of_week
 
     # Products/items in this payment request.
     def items
@@ -75,11 +101,38 @@ module PagSeguro
 
     # Calls the PagSeguro web service and register this request for payment.
     def register
+      if 
       params = Serializer.new(self).to_params.merge({
         email: email,
         token: token
       })
       Response.new Request.post("checkout", params)
+      
+      attr_accessor :pre_approval_charge
+    
+    attr_accessor :pre_approval_name
+    
+    attr_accessor :pre_approval_details
+    
+    attr_accessor :pre_approval_amount_per_payment
+    
+    attr_accessor :pre_approval_period
+    
+    attr_accessor :pre_approval_initial_date
+    
+    attr_accessor :pre_approval_final_date
+    
+    attr_accessor :pre_approval_max_amount_per_period
+    
+    attr_accessor :pre_approval_max_total_amount
+    
+    attr_accessor :review_url
+    
+    attr_accessor :pre_approval_day_of_year
+    
+    attr_accessor :pre_approval_day_of_month
+    
+    attr_accessor :pre_approval_day_of_week
     end
 
     private
