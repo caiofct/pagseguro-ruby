@@ -21,7 +21,7 @@ describe PagSeguro do
 
   context "default settings" do
     it { expect(PagSeguro.encoding).to eql("UTF-8") }
-    it { expect(PagSeguro.environment).to eql(:production) }
+    it { expect(PagSeguro.environment).to eql(:development) }
   end
 
   describe ".api_url" do
@@ -34,7 +34,17 @@ describe PagSeguro do
     end
 
     it "returns api url" do
+      expect(PagSeguro.api_url("/some/path")).to eql("https://ws.sandbox.pagseguro.uol.com.br/v2/some/path")
+    end
+
+    it "returns api url when environment is production" do
+      PagSeguro.environment = :production
       expect(PagSeguro.api_url("/some/path")).to eql("https://ws.pagseguro.uol.com.br/v2/some/path")
+    end
+
+    it "returns api url when environment is test" do
+      PagSeguro.environment = :test
+      expect(PagSeguro.api_url("/some/path")).to eql("https://ws.sandbox.pagseguro.uol.com.br/v2/some/path")
     end
   end
 
@@ -48,7 +58,17 @@ describe PagSeguro do
     end
 
     it "returns site url" do
+      expect(PagSeguro.site_url("/some/path")).to eql("https://sandbox.pagseguro.uol.com.br/v2/some/path")
+    end
+
+    it "returns site url when environment is production" do
+      PagSeguro.environment = :production
       expect(PagSeguro.site_url("/some/path")).to eql("https://pagseguro.uol.com.br/v2/some/path")
+    end
+
+    it "returns site url when environment is test" do
+      PagSeguro.environment = :test
+      expect(PagSeguro.site_url("/some/path")).to eql("https://sandbox.pagseguro.uol.com.br/v2/some/path")
     end
   end
 end

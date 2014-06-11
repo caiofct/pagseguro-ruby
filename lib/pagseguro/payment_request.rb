@@ -57,7 +57,7 @@ module PagSeguro
     # The token that identifies the request. Defaults to PagSeguro.token
     attr_accessor :token
 
-    # The token that identifies the request. Defaults to PagSeguro.token    
+    # Subscription pre-approval params.    
     attr_accessor :pre_approval_charge
     
     attr_accessor :pre_approval_name

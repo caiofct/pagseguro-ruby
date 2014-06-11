@@ -47,12 +47,12 @@ module PagSeguro
     attr_accessor :encoding
 
     # The PagSeguro environment.
-    # Only +production+ for now.
+    # Can be: +development+, +production+ or +test+.
     attr_accessor :environment
   end
 
   self.encoding = "UTF-8"
-  self.environment = :production
+  self.environment = :development
 
   # Register endpoints by environment.
   def self.uris
@@ -60,6 +60,14 @@ module PagSeguro
       production: {
         api: "https://ws.pagseguro.uol.com.br/v2",
         site: "https://pagseguro.uol.com.br/v2"
+      },
+      development: {
+        api:  'https://ws.sandbox.pagseguro.uol.com.br/v2',
+        site: 'https://sandbox.pagseguro.uol.com.br/v2'
+      },
+      test: {
+        api:  'https://ws.sandbox.pagseguro.uol.com.br/v2',
+        site: 'https://sandbox.pagseguro.uol.com.br/v2'
       }
     }
   end
