@@ -58,31 +58,7 @@ module PagSeguro
     attr_accessor :token
 
     # Subscription pre-approval params.    
-    attr_accessor :pre_approval_charge
-    
-    attr_accessor :pre_approval_name
-    
-    attr_accessor :pre_approval_details
-    
-    attr_accessor :pre_approval_amount_per_payment
-    
-    attr_accessor :pre_approval_period
-    
-    attr_accessor :pre_approval_initial_date
-    
-    attr_accessor :pre_approval_final_date
-    
-    attr_accessor :pre_approval_max_amount_per_period
-    
-    attr_accessor :pre_approval_max_total_amount
-    
-    attr_accessor :review_url
-    
-    attr_accessor :pre_approval_day_of_year
-    
-    attr_accessor :pre_approval_day_of_month
-    
-    attr_accessor :pre_approval_day_of_week
+    attr_reader :pre_approval
 
     # Products/items in this payment request.
     def items
@@ -97,6 +73,11 @@ module PagSeguro
     # Set the shipping info.
     def shipping=(shipping)
       @shipping = ensure_type(Shipping, shipping)
+    end
+
+    # Set the pre-approval info.
+    def pre_approval=(pre_approval)
+      @pre_approval = ensure_type(PreApproval, pre_approval)
     end
 
     # Calls the PagSeguro web service and register this request for payment.

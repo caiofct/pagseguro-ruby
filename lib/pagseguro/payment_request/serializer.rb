@@ -19,28 +19,16 @@ module PagSeguro
         params[:maxUses] = payment_request.max_uses
         params[:maxAge] = payment_request.max_age
         
-        #pre approval
-        params[:preApprovalCharge] = payment_request.pre_approval_charge
-        params[:preApprovalName] = payment_request.pre_approval_name
-        params[:preApprovalDetails] = payment_request.pre_approval_details
-        params[:preApprovalAmountPerPayment] = to_amount(payment_request.pre_approval_amount_per_payment)
-        params[:preApprovalPeriod] = payment_request.pre_approval_period
-        params[:preApprovalInitialDate] = payment_request.pre_approval_initial_date
-        params[:preApprovalFinalDate] = payment_request.pre_approval_final_date
-        params[:preApprovalMaxAmountPerPeriod] = to_amount(payment_request.pre_approval_max_amount_per_period)
-        params[:preApprovalMaxTotalAmount] = to_amount(payment_request.pre_approval_max_total_amount)
-        params[:reviewUrl] = payment_request.review_url
-        params[:preApprovalDayOfYear] = payment_request.pre_approval_day_of_year
-        params[:preApprovalDayOfMonth] = payment_request.pre_approval_day_of_month
-        params[:preApprovalDayOfWeek] = payment_request.pre_approval_day_of_week
-       
         
+       
         payment_request.items.each.with_index(1) do |item, index|
           serialize_item(item, index)
         end
 
         serialize_sender(payment_request.sender)
         serialize_shipping(payment_request.shipping)
+        # Pre-Approval
+        serialize_pre_approval(payment_request.pre_approval)
 
         params.delete_if {|key, value| value.nil? }
 
@@ -50,6 +38,23 @@ module PagSeguro
       private
       def params
         @params ||= {}
+      end
+
+      def serialize_pre_approval(pre_approval)
+        return unless pre_approval
+
+        params[:preApprovalCharge] = pre_approval.pre_approval_charge
+        params[:preApprovalName] = pre_approval.pre_approval_name
+        params[:preApprovalDetails] = pre_approval.pre_approval_details
+        params[:preApprovalAmountPerPayment] = to_amount(pre_approval.pre_approval_amount_per_payment)
+        params[:preApprovalPeriod] = pre_approval.pre_approval_period
+        params[:preApprovalInitialDate] = pre_approval.pre_approval_initial_date
+        params[:preApprovalFinalDate] = pre_approval.pre_approval_final_date
+        params[:preApprovalMaxTotalAmount] = to_amount(pre_approval.pre_approval_max_total_amount)
+        params[:preApprovalMaxAmountPerPeriod] = to_amount(pre_approval.pre_approval_max_amount_per_period)
+        params[:preApprovalDayOfYear] = pre_approval.pre_approval_day_of_year
+        params[:preApprovalDayOfMonth] = pre_approval.pre_approval_day_of_month
+        params[:preApprovalDayOfWeek] = pre_approval.pre_approval_day_of_week
       end
 
       def serialize_item(item, index)
