@@ -10,6 +10,7 @@ module PagSeguro
 
       def to_params
         # Base params
+        params[:notificationURL] = pre_approval_request.notification_url
         params[:redirectURL] = pre_approval_request.redirect_url
         params[:reviewUrl] = pre_approval_request.review_url
         params[:reference] = pre_approval_request.reference

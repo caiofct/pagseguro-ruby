@@ -9,6 +9,13 @@ module PagSeguro
     # confirmation page on your web site.
     attr_accessor :redirect_url
 
+    # Determines for which url PagSeguro will send the order related
+    # notifications codes.
+    # Optional. Any change happens in the transaction status, a new notification
+    # request will be send to this url. You can use that for update the related
+    # order.
+    attr_accessor :notification_url
+
     # Set the review url.
     # The URL that will be user by PagSeguro to show the product's details
     # to the user.
