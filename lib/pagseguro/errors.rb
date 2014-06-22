@@ -14,6 +14,7 @@ module PagSeguro
 
     private
     def process_response
+      @messages << error_message(:not_found, "Not Found") if @response.not_found?
       @messages << error_message(:unauthorized, "Unauthorized") if @response.unauthorized?
 
       @response.data.css("errors > error").each do |error|

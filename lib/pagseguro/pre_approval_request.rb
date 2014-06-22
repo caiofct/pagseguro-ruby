@@ -33,6 +33,9 @@ module PagSeguro
     # The token that identifies the request. Defaults to PagSeguro.token
     attr_accessor :token
 
+    # The pre-approval code used for some requests, like to cancle a pre-approval
+    attr_accessor :code
+
     # Get the payment sender.
     attr_reader :sender
 
@@ -56,6 +59,11 @@ module PagSeguro
         token: token
       })
       Response.new Request.post("pre-approvals/request", params)
+    end
+
+    # Calls the PagSeguro web service and cancel the pre-approval
+    def cancel
+      Response.new Request.get("pre-approvals/cancel/#{code}?email=#{email}&token=#{token}")
     end
       
     private
