@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<preApproval>
+	<name>Light</name>
+	<code>BC1C3A45353517BDD4A26FB17357B021</code>
+	<date>2014-07-31T23:03:27.000-03:00</date>
+	<tracker>3A0D05</tracker>
+	<status>ACTIVE</status>
+	<reference>56565</reference>
+	<lastEventDate>2014-07-31T23:12:10.000-03:00</lastEventDate>
+	<charge>AUTO</charge>
+	<sender>
+		<name>JOHN DOE</name>
+		<email>john@example.com</email>
+		<phone>
+			<areaCode>11</areaCode>
+			<number>12345678</number>
+		</phone>
+		<address>
+			<street>AV. BRIG. FARIA LIMA</street>
+			<number>1384</number>
+			<complement>5 ANDAR</complement>
+			<district>JARDIM PAULISTANO</district>
+			<city>SAO PAULO</city>
+			<state>SP</state>
+			<country>BRA</country>
+			<postalCode>01452002</postalCode>
+		</address>
+	</sender>
+</preApproval>
