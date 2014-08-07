@@ -6,6 +6,7 @@ module PagSeguro
       "ACTIVE" => :active,
       "CANCELLED" => :cancelled,
       "CANCELLED_BY_RECEIVER" => :cancelled_by_receiver,
+      "CANCELLED_BY_SENDER" => :cancelled_by_sender
     }.freeze
 
     # The payment status id.
