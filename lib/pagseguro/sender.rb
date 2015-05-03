@@ -15,6 +15,8 @@ module PagSeguro
     # Set the CPF document.
     attr_accessor :cpf
 
+    attr_accessor :sender_hash
+
     # Get the Sender address.
     attr_reader :address
 

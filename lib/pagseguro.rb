@@ -38,6 +38,15 @@ require "pagseguro/transaction"
 require "pagseguro/transaction/response"
 require "pagseguro/transaction/serializer"
 
+require "pagseguro/session"
+require "pagseguro/session/response"
+require "pagseguro/session/serializer"
+
+require "pagseguro/direct_payment"
+require "pagseguro/direct_payment/serializer"
+require "pagseguro/direct_payment/response"
+require "pagseguro/credit_card"
+
 I18n.load_path += Dir[File.expand_path("../../locales/*.yml", __FILE__)]
 
 module PagSeguro
