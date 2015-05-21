@@ -52,6 +52,7 @@ module PagSeguro
         params[:senderEmail] =  sender.email
         params[:senderName] = sender.name
         params[:senderCPF] = sender.cpf
+        params[:senderHash] = sender.sender_hash
 
         serialize_phone(sender.phone)
       end
