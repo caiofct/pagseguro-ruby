@@ -23,7 +23,7 @@ module PagSeguro
         data[:reference] = xml.css("reference").text
         data[:type_id] = xml.css(">type").text
         data[:payment_link] = xml.css("paymentLink").text
-        data[:status] = xml.css("status").text
+        data[:status] = xml.css("status").first.text
 
         cancellation_source = xml.css("cancellationSource")
         data[:cancellation_source] = cancellation_source.text if cancellation_source.any?
